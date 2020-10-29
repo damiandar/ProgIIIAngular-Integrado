@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-12">
+        <p>Listado producto</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-9">
+        <input class="form-control" [(ngModel)]="campobuscado" name="campobuscado"/>
+    </div>
+    <div class="col-md-3">
+        <button (click)="Buscar()" class="btn btn-primary" > Buscar</button>
+        <!--
+        <button (click)="Crear()" class="btn btn-warning" > Crear</button>
+        -->
+
+        <button [routerLink]='["/productos-crear"]' class="btn btn-success">
+        Ir a formulario
+        </button>
+    </div>
+</div>
+
+
+
+<table class="table" >
+<tr>
+    <th>id</th>
+    <th>nombre</th>
+    <th>descripcion</th>
+    <th>precio</th>
+    <th>stock</th>
+    <th>fecha</th>
+    <td></td>
+</tr>
+<tr  *ngFor="let prod of listadoProductos" > 
+    <td>{{ prod.id }}</td>
+    <td>{{ prod.nombre }}</td>
+    <td>{{ prod.descripcion }}</td>
+    <td>{{ prod.precio }}</td>
+    <td>{{ prod.tieneStock }}</td>
+    <td>{{ prod.fechaCreacion | date: 'dd/MM/yyyy' }}</td>
+    <td>
+        <button class="btn btn-danger" (click)="borrar(prod.id)">Borrar</button>
+        <button class="btn btn-success" (click)="Modificar(prod.id)">Modificar</button>
+        <button class="btn btn-warning" (click)="TieneStock(prod.id)">Stock</button>
+        <button class="btn btn-primary" [routerLink]='["/productos-editar/" +  prod.id  ]'  >Editar</button>
+        
+    </td>
+
+
+</tr>
+
+</table>
