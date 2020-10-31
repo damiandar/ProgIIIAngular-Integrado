@@ -61,7 +61,6 @@ export class ProductosFormComponent implements OnInit {
   }
 
   cargarFormulario(producto:Iproducto){
-    console.table(producto);
       this.formProductos.patchValue({
         nombre:producto.nombre,
         descripcion:producto.descripcion,
@@ -73,45 +72,24 @@ export class ProductosFormComponent implements OnInit {
 
   save(){
     let productoFormulario: Iproducto =Object.assign({},this.formProductos.value);
-
-
-    console.dir(productoFormulario);
+    productoFormulario.precio=+productoFormulario.precio;
 
     if(this.modoEdicion){
         productoFormulario.id=+this.productoId;
         this.ProductosService.Actualizar(productoFormulario)
-        .subscribe( resultado=> alert("Modificado OK"),
+        .subscribe( 
+                    ()=> alert("Modificado OK"),
                     error=> alert(error)
         );
 
     }
     else{
-
-  
-        var productoNuevo: Iproducto;
-        productoNuevo={
-          id:1,
-          nombre: productoFormulario.nombre,
-          descripcion: productoFormulario.descripcion,
-          precio:productoFormulario.precio, 
-          tieneStock:productoFormulario.tieneStock,
-          fechaCreacion: productoFormulario.fechaCreacion,
-        };
-
-     
-        this.ProductosService.Crear(productoNuevo)
+        this.ProductosService.Crear(productoFormulario)
             .subscribe( 
                     ()=> alert("Inserto OK"),
-                    error=> {
-                          alert("Error al crear: " + error);
-                          console.dir(error);
-                          }
+                    error=> alert("Error al crear: " + error)
             );
-         
-
-
-        
-    }
+        }
 
 
   }

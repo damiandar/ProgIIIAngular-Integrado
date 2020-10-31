@@ -85,7 +85,7 @@ export class ProductosComponent implements OnInit {
 
 
   borrar(prodId:number){
-    this.servicio.Borrar(100)
+    this.servicio.Borrar(prodId)
     .subscribe(
       resultado=> console.dir(resultado),
       error => console.dir(error),

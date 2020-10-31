@@ -14,9 +14,9 @@ export class ProductosService {
   constructor(@Inject('BASE_URL') private baseUrl: string, private http: HttpClient  ) { }
 
   MostrarTodos(): Observable<Iproducto[]>{
-
     return this.http.get<Iproducto[]>(this.apiURL);
   }
+  
   MostrarPorId(id:number){
     return this.http.get<Iproducto>(this.apiURL + "/" + id);
   }
