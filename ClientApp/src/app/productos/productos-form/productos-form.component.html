@@ -11,6 +11,15 @@
     required
     formControlName="nombre"
     >
+    <span class="help-block" 
+    *ngIf="(  formProductos.get('nombre').touched || 
+              formProductos.get('nombre').dirty  && 
+             !formProductos.valid ) " >
+        <span *ngIf="formProductos.get('nombre').errors?.required"   >
+        El campo es requerido
+        </span>
+    </span>
+
 </div>
 <div class="form-group">
     <label for="descripcion">Descripcion</label>
@@ -19,6 +28,14 @@
     required
     formControlName="descripcion"
     >
+    <span class="help-block" 
+    *ngIf="(  formProductos.get('descripcion').touched || 
+              formProductos.get('descripcion').dirty  && 
+             !formProductos.valid ) " >
+        <span *ngIf="formProductos.get('descripcion').errors?.required"   >
+        El campo es requerido
+        </span>
+    </span>
 </div>
 <div class="form-group">
     <label for="precio">Precio</label>

@@ -31,7 +31,6 @@ export class ProductosFormComponent implements OnInit {
                     if( isNaN(this.productoId)  )
                     {
                       //return;
-
                     }
                     else{
                       this.modoEdicion=true;
