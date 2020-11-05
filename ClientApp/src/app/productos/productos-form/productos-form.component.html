@@ -4,40 +4,52 @@
 (ngSubmit)="save()" >
 
 <fieldset>
-<div class="form-group">
+<div class="form-group" [ngClass]="{'has-error': 
+       ( formProductos.get('nombre').touched || 
+         formProductos.get('nombre').dirty  && 
+        !formProductos.get('nombre').valid )
+    }">
+
     <label for="nombre">Nombre</label>
     <input id="nombre" class="form-control"
-    type="text"
+    type="text" 
     required
     formControlName="nombre"
     >
-    <span class="help-block" 
-    *ngIf="(  formProductos.get('nombre').touched || 
-              formProductos.get('nombre').dirty  && 
-             !formProductos.valid ) " >
-        <span *ngIf="formProductos.get('nombre').errors?.required"   >
-        El campo es requerido
-        </span>
-    </span>
+<span class="help-block"
+    *ngIf="   ( formProductos.get('nombre').touched || 
+    formProductos.get('nombre').dirty  && 
+   !formProductos.get('nombre').valid )">
+    <span *ngIf="formProductos.get('nombre').errors?.required">
+    El campo es requerido</span>
+</span>
 
 </div>
-<div class="form-group">
+<div class="form-group" [ngClass]="{'has-error': 
+( formProductos.get('descripcion').touched || 
+  formProductos.get('descripcion').dirty  && 
+ !formProductos.get('descripcion').valid )
+}">
     <label for="descripcion">Descripcion</label>
     <input id="descripcion" class="form-control"
     type="text"
     required
     formControlName="descripcion"
     >
-    <span class="help-block" 
-    *ngIf="(  formProductos.get('descripcion').touched || 
-              formProductos.get('descripcion').dirty  && 
-             !formProductos.valid ) " >
-        <span *ngIf="formProductos.get('descripcion').errors?.required"   >
-        El campo es requerido
-        </span>
-    </span>
+    <span class="help-block"
+    *ngIf="   ( formProductos.get('descripcion').touched || 
+    formProductos.get('descripcion').dirty  && 
+   !formProductos.get('descripcion').valid )">
+    <span *ngIf="formProductos.get('descripcion').errors?.required">
+    El campo es requerido</span>
+</span>
 </div>
-<div class="form-group">
+
+<div class="form-group" [ngClass]="{ 'has-error': 
+( formProductos.get('precio').touched || 
+  formProductos.get('precio').dirty  && 
+ !formProductos.get('precio').valid )
+}">
     <label for="precio">Precio</label>
     <input id="precio" class="form-control"
     type="text"
@@ -45,7 +57,11 @@
     formControlName="precio"
     >
 </div>
-<div class="form-group">
+<div class="form-group" [ngClass]="{ 'has-error': 
+( formProductos.get('fechaCreacion').touched || 
+  formProductos.get('fechaCreacion').dirty  && 
+ !formProductos.get('fechaCreacion').valid )
+}">
     <label for="fechaCreacion">Fecha</label>
     <input id="fechaCreacion" class="form-control"
     type="date"

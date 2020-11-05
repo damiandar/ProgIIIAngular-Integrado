@@ -20,9 +20,12 @@
     </div>
 </div>
 
+<p *ngIf="! (listadoProductos && listadoProductos.length ) ">
+    No hay productos cargados
+</p>
 
 
-<table class="table" >
+<table class="table"   *ngIf=" (listadoProductos && listadoProductos.length ) "  >
 <tr>
     <th>id</th>
     <th>nombre</th>

@@ -5,6 +5,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Text;
+
 namespace Clase10
 {
     public class Startup
@@ -25,6 +29,28 @@ namespace Clase10
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(
+                options => {
+                    options.RequireHttpsMetadata=false;
+                    options.SaveToken=true;
+                    options.TokenValidationParameters=new TokenValidationParameters{
+                        ValidateIssuer=true,
+                        ValidateAudience=true,
+                        ValidateLifetime=true,
+                        ValidateIssuerSigningKey=true,
+                        ValidIssuer=Configuration["Jwt:Issuer"],
+                        ValidAudience=Configuration["Jwt:Audience"],
+                        IssuerSigningKey=new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:SecretKey"])),
+                    };
+                }
+            );
+
+            services.AddOpenApiDocument(configure => {
+                configure.Title = "Programacion III";
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -33,6 +59,10 @@ namespace Clase10
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                //agrego las siguientes dos lineas para el swagger
+                app.UseOpenApi();
+                app.UseSwaggerUi3();
+
             }
             else
             {
@@ -66,6 +96,9 @@ namespace Clase10
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+
+
+
         }
     }
 }
