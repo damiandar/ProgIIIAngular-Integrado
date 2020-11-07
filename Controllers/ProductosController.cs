@@ -18,6 +18,7 @@ namespace Clase10.Controllers
             new Producto(){ Id=3, Nombre="Borrador", Descripcion="" , Precio=300, TieneStock=true, FechaCreacion=new DateTime(2020,10,06)},
             new Producto(){ Id=4, Nombre="Marcador", Descripcion="azul" , Precio=200, TieneStock=false, FechaCreacion=new DateTime(2020,09,13)},
             new Producto(){ Id=5, Nombre="Cuaderno", Descripcion="cuadriculado" , Precio=100, TieneStock=false, FechaCreacion=new DateTime(2020,10,14)},
+            new Producto(){ Id=5, Nombre="Plasticola", Descripcion="blanca" , Precio=100, TieneStock=false, FechaCreacion=new DateTime(2020,10,14)},
         };
 
         [HttpGet]
