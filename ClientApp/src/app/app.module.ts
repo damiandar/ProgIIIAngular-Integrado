@@ -11,6 +11,7 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ProductosComponent } from './productos/productos.component';
 import { ProductosFormComponent } from './productos/productos-form/productos-form.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ProductosFormComponent } from './productos/productos-form/productos-for
     CounterComponent,
     FetchDataComponent,
     ProductosComponent,
-    ProductosFormComponent
+    ProductosFormComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -35,6 +37,7 @@ import { ProductosFormComponent } from './productos/productos-form/productos-for
       { path: 'productos-listado', component: ProductosComponent },
       { path: 'productos-crear', component: ProductosFormComponent },
       { path: 'productos-editar/:id', component: ProductosFormComponent },
+      { path: 'login', component: LoginComponent },
       
     ])
   ],
