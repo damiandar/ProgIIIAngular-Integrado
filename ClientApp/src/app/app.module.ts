@@ -12,6 +12,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ProductosComponent } from './productos/productos.component';
 import { ProductosFormComponent } from './productos/productos-form/productos-form.component';
 import { LoginComponent } from './login/login.component';
+import { GuardPaginaService } from './servicios/guard-pagina.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
+      { path: 'counter', component: CounterComponent,canActivate: [GuardPaginaService] },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'productos', component: ProductosComponent },
       { path: 'productos-listado', component: ProductosComponent },

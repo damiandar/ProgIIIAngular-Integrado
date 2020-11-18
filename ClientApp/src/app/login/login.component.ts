@@ -24,6 +24,9 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
+        if(this.authenticationService.estaLogueado()){
+            this.authenticationService.logout();
+        }
         this.loginForm = this.formBuilder.group({
             userName: ['', Validators.required],
             password: ['', Validators.required]
