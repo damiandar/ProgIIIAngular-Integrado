@@ -10,7 +10,7 @@ export class GuardPaginaService implements CanActivate {
   constructor(private srvAutenticacion: AutenticacionService, private router: Router) { }
 
   canActivate() {
-      // If the user is not logged in we'll send them back to the home page
+      //Si no está logueado lo envia a la pagina principal o la que defina por ej /productos
       if (!this.srvAutenticacion.estaLogueado()) {
           console.log('No estás logueado');
           this.router.navigate(['/']);
