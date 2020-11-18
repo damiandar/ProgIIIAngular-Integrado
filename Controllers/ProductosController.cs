@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Clase10.Controllers
 {
@@ -21,6 +22,7 @@ namespace Clase10.Controllers
         };
 
         [HttpGet]
+        [Authorize] 
         public List<Producto> GetProductos(){
             return Productos;
         }

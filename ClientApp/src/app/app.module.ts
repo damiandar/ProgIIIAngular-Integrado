@@ -12,8 +12,9 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ProductosComponent } from './productos/productos.component';
 import { ProductosFormComponent } from './productos/productos-form/productos-form.component';
 import { LoginComponent } from './login/login.component';
-import { GuardPaginaService } from './servicios/guard-pagina.service';
 
+import { GuardPaginaService } from './servicios/guard-pagina.service';
+import { InterceptorService} from './servicios/interceptor.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +43,9 @@ import { GuardPaginaService } from './servicios/guard-pagina.service';
       
     ])
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true } 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

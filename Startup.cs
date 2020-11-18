@@ -81,8 +81,14 @@ namespace Clase10
             {
                 app.UseSpaStaticFiles();
             }
-
+        
             app.UseRouting();
+
+            //los agrego para que funcione la autenticacion
+            app.UseAuthentication();
+
+            app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {
@@ -103,6 +109,7 @@ namespace Clase10
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+           
         }
     }
 }
